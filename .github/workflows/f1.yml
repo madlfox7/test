@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+      - name: Ensure execute permission for script
+        run: chmod +x ./automate_report.sh  # Make sure the script is executable
       - name: Run Script
         run: |
           echo "Running automate_report.sh script"
