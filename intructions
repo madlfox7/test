@@ -1,0 +1,99 @@
+madlfox7 ➜ /workspaces/test (main) $ sudo apt-get install at
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  libfl2
+Suggested packages:
+  default-mta | mail-transport-agent
+The following NEW packages will be installed:
+  at libfl2
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 50.1 kB of archives.
+After this operation, 241 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://archive.ubuntu.com/ubuntu focal/main amd64 libfl2 amd64 2.6.4-6.2 [11.5 kB]
+Get:2 http://archive.ubuntu.com/ubuntu focal/main amd64 at amd64 3.1.23-1ubuntu1 [38.7 kB]
+Fetched 50.1 kB in 0s (142 kB/s)
+Selecting previously unselected package libfl2:amd64.
+(Reading database ... 70097 files and directories currently installed.)
+Preparing to unpack .../libfl2_2.6.4-6.2_amd64.deb ...
+Unpacking libfl2:amd64 (2.6.4-6.2) ...
+Selecting previously unselected package at.
+Preparing to unpack .../at_3.1.23-1ubuntu1_amd64.deb ...
+Unpacking at (3.1.23-1ubuntu1) ...
+Setting up libfl2:amd64 (2.6.4-6.2) ...
+Setting up at (3.1.23-1ubuntu1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/atd.service → /lib/systemd/system/atd.service.
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+Processing triggers for systemd (245.4-4ubuntu3.24) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.16) ...
+@madlfox7 ➜ /workspaces/test (main) $ echo "/bin/bash /workspaces/test/automate_report.sh" | at 3:00 AM
+warning: commands will be executed using /bin/sh
+job 1 at Tue Jan 28 03:00:00 2025
+Can't open /var/run/atd.pid to signal atd. No atd running?
+@madlfox7 ➜ /workspaces/test (main) $ pip install schedule
+Collecting schedule
+  Downloading schedule-1.2.2-py3-none-any.whl.metadata (3.8 kB)
+Downloading schedule-1.2.2-py3-none-any.whl (12 kB)
+Installing collected packages: schedule
+Successfully installed schedule-1.2.2
+@madlfox7 ➜ /workspaces/test (main) $ pip install schedule
+Requirement already satisfied: schedule in /home/codespace/.python/current/lib/python3.12/site-packages (1.2.2)
+@madlfox7 ➜ /workspaces/test (main) $ touch scheduler.py
+@madlfox7 ➜ /workspaces/test (main) $ nohup python3 scheduler.py &
+[1] 48874
+nohup: ignoring input and appending output to 'nohup.out'
+@madlfox7 ➜ /workspaces/test (main) $ tail -f nohup.out
+^C
+@madlfox7 ➜ /workspaces/test (main) $ ps aux | grep python
+codespa+   48874  0.0  0.1  20920 14080 pts/2    S    10:19   0:00 python3 scheduler.py
+codespa+   49167  0.0  0.0   8172  2432 pts/2    S+   10:19   0:00 grep --color=auto python
+@madlfox7 ➜ /workspaces/test (main) $ ps aux | grep python
+codespa+   48874  0.0  0.1  20920 14080 pts/2    S    10:19   0:00 python3 scheduler.py
+codespa+   49806  0.0  0.0   8172  2176 pts/2    S+   10:21   0:00 grep --color=auto python
+@madlfox7 ➜ /workspaces/test (main) $ nohup python3 scheduler.py &
+[2] 51264
+nohup: ignoring input and appending output to 'nohup.out'
+@madlfox7 ➜ /workspaces/test (main) $ timedatectl
+[2]+  Exit 1                  nohup python3 scheduler.py
+System has not been booted with systemd as init system (PID 1). Can't operate.
+Failed to create bus connection: Host is down
+@madlfox7 ➜ /workspaces/test (main) $ ps aux | grep scheduler.py
+codespa+   48874  0.0  0.1  20920 14080 pts/2    S    10:19   0:00 python3 scheduler.py
+codespa+   51504  0.0  0.0   8180  2432 pts/2    S+   10:25   0:00 grep --color=auto scheduler.py
+@madlfox7 ➜ /workspaces/test (main) $ nohup python3 scheduler.py &
+[2] 51772
+nohup: ignoring input and appending output to 'nohup.out'
+@madlfox7 ➜ /workspaces/test (main) $ nohup python3 scheduler.py &
+[3] 51952
+nohup: ignoring input and appending output to 'nohup.out'
+@madlfox7 ➜ /workspaces/test (main) $ tail -f nohup.ou^C
+@madlfox7 ➜ /workspaces/test (main) $ python scheduler.py 
+Email sent successfully!
+^CTraceback (most recent call last):
+  File "/workspaces/test/scheduler.py", line 16, in <module>
+KeyboardInterrupt
+
+@madlfox7 ➜ /workspaces/test (main) $ python scheduler.py 
+^CTraceback (most recent call last):
+  File "/workspaces/test/scheduler.py", line 13, in <module>
+    time.sleep(60)  # Wait for 1 minute before checking again
+    ^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+@madlfox7 ➜ /workspaces/test (main) $ python scheduler.py 
+^CTraceback (most recent call last):
+  File "/workspaces/test/scheduler.py", line 13, in <module>
+    time.sleep(60)  # Wait for 1 minute before checking again
+    ^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+@madlfox7 ➜ /workspaces/test (main) $ nohup python3 scheduler.py &
+[4] 53165
+nohup: ignoring input and appending output to 'nohup.out'
+@madlfox7 ➜ /workspaces/test (main) $ nohup python3 scheduler.py &
+[5] 53922
+nohup: ignoring input and appending output to 'nohup.out'

@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/workspaces/test/scheduler.py", line 18, in <module>
+    from send_email_script import send_email_with_attachment, file_contains_words
+ModuleNotFoundError: No module named 'send_email_script'
+Email sent successfully!
+Traceback (most recent call last):
+  File "/workspaces/test/scheduler.py", line 9, in <module>
+    schedule.every().day.at("3:00").do(job)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/codespace/.python/current/lib/python3.12/site-packages/schedule/__init__.py", line 514, in at
+    raise ScheduleValueError(
+schedule.ScheduleValueError: Invalid time format for a daily job (valid format is HH:MM(:SS)?)
